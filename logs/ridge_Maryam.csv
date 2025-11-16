@@ -1,0 +1,3 @@
+EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,alpha
+experiment 1B,Maryam,ridge,42,5,img+text,none,False,256,none,1530,0.6250081949558959,0.028515569446327122,,,0.7664086818695068,submissions\ridge_Maryam_ridge_pca256_v1.csv,"RidgeClassifier: alpha=1.0, PCA256, standard scaler.",1.0
+experiment 1B,Maryam,ridge,42,5,img+text,none,False,256,none,1530,0.6250081949558959,0.028515569446327122,,,1.8820650577545166,submissions\ridge_Maryam_ridge_pca256_v1.csv,"RidgeClassifier: alpha=1.0, PCA256, standard scaler.",1.0
