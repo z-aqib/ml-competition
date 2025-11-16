@@ -1,3 +1,4 @@
 EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,C,loss,max_iter,penalty,random_state
 experiment_24A,Zuha,svm,42,5,img+text,minmax,True,256,none,1530,0.6194192186176048,0.05144095315594944,,,1.0290796756744385,submissions\experiment_24A_linearsvm_pca256_v1.csv,"LinearSVC + PCA256, standard scaler.",1.0,squared_hinge,5000,l2,42
 experiment_24A,Zuha,svm,42,5,img+text,minmax,True,256,none,1530,0.6194192186176048,0.05144095315594944,,,0.56707763671875,submissions\svm_Zuha.csv,"LinearSVC + PCA256, standard scaler.",1.0,squared_hinge,5000,l2,42
+experiment_25A,Zuha,svm,42,10,img+text,minmax,True,512,balanced,1530,0.5815971273985437,0.0317931207403298,,,19.86357593536377,submissions\svm_Zuha.csv,"LinearSVC + PCA256, standard scaler.",10.0,balanced,squared_hinge,500,l2,42
