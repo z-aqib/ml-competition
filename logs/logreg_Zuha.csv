@@ -1,0 +1,8 @@
+EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,C,max_iter,penalty,random_state,solver
+experiment_5A,Zuha,logreg,42,5,img+text,none,False,256,none,1530,0.5829730367144067,0.043169784186952026,,,0.8534266948699951,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",1.0,500,l2,42,lbfgs
+experiment_6A,Zuha,logreg,42,5,img+text,minmax,True,256,none,1530,0.630024872930131,0.04470779579476641,,,2.899148464202881,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",1.0,500,l2,42,lbfgs
+experiment_7A,Zuha,logreg,42,5,img+text,maxabs,True,256,none,1530,0.6215680272446289,0.03986042197014098,,,0.5391855239868164,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",10.0,1000,l2,42,lbfgs
+experiment_9A,Zuha,logreg,42,7,img+text,maxabs,True,256,none,1530,0.605792900390778,0.024374599216820544,,,0.4888143539428711,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",0.01,500,l2,42,liblinear
+experiment_11A,Zuha,logreg,42,7,img+text,minmax,True,64,none,1530,0.464285531288983,0.00043627585162770333,,,0.3134338855743408,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",0.01,5000,l1,42,saga
+experiment_13A,Zuha,logreg,42,7,img+text,minmax,True,64,none,1530,0.6093146531533602,0.026065148366114444,,,0.32358431816101074,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",2.0,1000,l2,42,lbfgs
+experiment_14A,Zuha,logreg,42,10,img+text,l2_norm,True,512,none,1530,0.6286167443888441,0.0652278491987738,,,2.2096855640411377,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",10.0,200,l2,42,lbfgs
