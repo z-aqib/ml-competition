@@ -9,92 +9,152 @@ META_PATH = os.path.join(ANALYZING_DIR, "submissions_metadata.csv")
 OUTPUT_DIR = "submissions"
 OUTPUT_PATH = os.path.join(OUTPUT_DIR, "random_Zuha.csv")
 
-ID_COL = "row_id"          # your id column
-PRED_COL_NAME = "target"   # prediction column in each submission
+ID_COL = "row_id"          # your id column in each submission CSV
+PRED_COL_NAME = "target"   # prediction column in each submission CSV
 
-ALPHA = 4.0                # higher -> best models get much more weight
-THRESHOLD = 0.5            # 0.5 for binary decision
+# ---- Good models (positive ensemble) ----
+ALPHA = 4.0                # higher -> best good models get much more weight
+MIN_SCORE = 0.70           # only models with kaggle_score >= MIN_SCORE are "good"
 
-MIN_SCORE = 0.7           # ignore submissions below this Kaggle score
-TOP_N = None                  # or None to use all above MIN_SCORE
+# ---- Bad models (penalty ensemble) ----
+BAD_LIMIT = 0.4           # models with kaggle_score <= BAD_LIMIT are considered "bad"
+BAD_WEIGHT = 0.9          # how strongly bad models penalize the final score
+
+# ---- Final threshold on ensemble score ----
+THRESHOLD = 0.5            # final decision threshold for binary label
 
 
 def main():
+    if not os.path.exists(META_PATH):
+        raise FileNotFoundError(f"Metadata file not found: {META_PATH}")
+
     # 1. Load metadata
     meta = pd.read_csv(META_PATH)
 
     # Keep rows with a numeric kaggle_score
-    meta = meta[meta["kaggle_score"].notna()]
+    meta = meta[meta["kaggle_score"].notna()].copy()
     meta["kaggle_score"] = meta["kaggle_score"].astype(float)
 
-    # Filter by minimum score
-    meta = meta[meta["kaggle_score"] >= MIN_SCORE]
-
     if meta.empty:
-        raise ValueError("No submissions >= MIN_SCORE; adjust MIN_SCORE or fill kaggle_score column.")
+        raise ValueError("No rows with kaggle_score found in metadata. Fill that column first.")
 
-    # Sort by score descending
-    meta = meta.sort_values("kaggle_score", ascending=False)
+    # 2. Split into good and bad models
+    good_meta = meta[meta["kaggle_score"] >= MIN_SCORE].copy()
+    bad_meta = meta[meta["kaggle_score"] <= BAD_LIMIT].copy()
 
-    # Keep only top N if specified
-    if TOP_N is not None and len(meta) > TOP_N:
-        meta = meta.head(TOP_N)
+    if good_meta.empty:
+        raise ValueError(
+            f"No 'good' submissions found with kaggle_score >= {MIN_SCORE}. "
+            f"Lower MIN_SCORE or update submissions_metadata.csv."
+        )
 
-    print("Using these submissions for the ensemble:")
-    for _, row in meta.iterrows():
+    print("=== GOOD MODELS (used for main vote) ===")
+    for _, row in good_meta.sort_values("kaggle_score", ascending=False).iterrows():
         print(f"  {row['output_file']}  (score={row['kaggle_score']})")
 
-    files = meta["output_file"].tolist()
-    scores = meta["kaggle_score"].values
+    if bad_meta.empty:
+        print("\n=== BAD MODELS ===")
+        print("  None (no submissions <= BAD_LIMIT). Penalty will be zero.")
+    else:
+        print("\n=== BAD MODELS (used as penalty) ===")
+        for _, row in bad_meta.sort_values("kaggle_score", ascending=True).iterrows():
+            print(f"  {row['output_file']}  (score={row['kaggle_score']})")
 
-    # 2. Build weights from scores
-    weights = np.power(scores, ALPHA)
-    weights = weights / weights.sum()
+    good_files = good_meta["output_file"].tolist()
+    good_scores = good_meta["kaggle_score"].values
 
-    print("\nWeights:")
-    for f, s, w in zip(files, scores, weights):
+    bad_files = bad_meta["output_file"].tolist()
+    bad_scores = bad_meta["kaggle_score"].values
+
+    # 3. Build weights for good models
+    good_weights = np.power(good_scores, ALPHA)
+    good_weights = good_weights / good_weights.sum()
+
+    print("\n=== GOOD MODEL WEIGHTS (normalized) ===")
+    for f, s, w in zip(good_files, good_scores, good_weights):
         print(f"  {f}: score={s:.4f}, weight={w:.4f}")
 
-    # 3. Load and merge all submissions on ID_COL
-    ensemble_df = None
-    pred_cols = []
+    if bad_files:
+        print(f"\nBAD_WEIGHT (penalty strength) = {BAD_WEIGHT}")
+    else:
+        print("\nBAD_WEIGHT will effectively be ignored (no bad models).")
 
-    for idx, fname in enumerate(files):
+    # 4. Load and merge submissions
+    df_final = None
+    good_pred_cols = []
+    bad_pred_cols = []
+
+    # ---- Load good models ----
+    for idx, fname in enumerate(good_files):
         fpath = os.path.join(ANALYZING_DIR, fname)
+        if not os.path.exists(fpath):
+            raise FileNotFoundError(f"Good model file not found: {fpath}")
+
         df = pd.read_csv(fpath)
 
         if ID_COL not in df.columns:
-            raise ValueError(f"{fpath} does not contain '{ID_COL}' column")
-
+            raise ValueError(f"{fpath} does not contain ID column '{ID_COL}'")
         if PRED_COL_NAME not in df.columns:
-            raise ValueError(f"{fpath} does not contain '{PRED_COL_NAME}' column")
+            raise ValueError(f"{fpath} does not contain prediction column '{PRED_COL_NAME}'")
 
-        col_name = f"pred_{idx}"
-        df = df[[ID_COL, PRED_COL_NAME]].rename(columns={PRED_COL_NAME: col_name})
-        pred_cols.append(col_name)
+        col = f"good_{idx}"
+        df = df[[ID_COL, PRED_COL_NAME]].rename(columns={PRED_COL_NAME: col})
+        good_pred_cols.append(col)
 
-        if ensemble_df is None:
-            ensemble_df = df
-        else:
-            ensemble_df = ensemble_df.merge(df, on=ID_COL, how="inner")
+        df_final = df if df_final is None else df_final.merge(df, on=ID_COL, how="inner")
 
-    print(f"\nMerged shape: {ensemble_df.shape}")
-    print("Prediction columns:", pred_cols)
+    # ---- Load bad models ----
+    for idx, fname in enumerate(bad_files):
+        fpath = os.path.join(ANALYZING_DIR, fname)
+        if not os.path.exists(fpath):
+            print(f"[WARN] Bad model file not found (skipping): {fpath}")
+            continue
 
-    # 4. Weighted vote
-    ensemble_df[pred_cols] = ensemble_df[pred_cols].astype(float)
-    w_vec = weights.reshape(1, -1)
-    ensemble_df["weighted_score"] = (ensemble_df[pred_cols].values * w_vec).sum(axis=1)
+        df = pd.read_csv(fpath)
 
-    # Final hard label
-    ensemble_df[PRED_COL_NAME] = (ensemble_df["weighted_score"] >= THRESHOLD).astype(int)
+        if ID_COL not in df.columns or PRED_COL_NAME not in df.columns:
+            print(f"[WARN] {fpath} missing '{ID_COL}' or '{PRED_COL_NAME}' (skipping).")
+            continue
 
-    # 5. Save submission
+        col = f"bad_{idx}"
+        df = df[[ID_COL, PRED_COL_NAME]].rename(columns={PRED_COL_NAME: col})
+        bad_pred_cols.append(col)
+
+        df_final = df_final.merge(df, on=ID_COL, how="inner")
+
+    # Safety check
+    if df_final is None:
+        raise RuntimeError("No submissions could be loaded. Check your ANALYZING_DIR and metadata.")
+
+    print(f"\nMerged shape: {df_final.shape}")
+    print("Good prediction columns:", good_pred_cols)
+    print("Bad prediction columns:", bad_pred_cols)
+
+    # 5. Compute ensemble scores
+    df_final[good_pred_cols] = df_final[good_pred_cols].astype(float)
+    good_weight_vec = good_weights.reshape(1, -1)
+    # main vote from good models
+    good_vote = (df_final[good_pred_cols].values * good_weight_vec).sum(axis=1)
+
+    # penalty from bad models (average)
+    if bad_pred_cols:
+        df_final[bad_pred_cols] = df_final[bad_pred_cols].astype(float)
+        bad_vote = df_final[bad_pred_cols].mean(axis=1).values
+    else:
+        bad_vote = np.zeros_like(good_vote)
+
+    # final score = good_vote - BAD_WEIGHT * bad_vote
+    final_score = good_vote - BAD_WEIGHT * bad_vote
+
+    # 6. Final hard label
+    df_final[PRED_COL_NAME] = (final_score >= THRESHOLD).astype(int)
+
+    # 7. Save submission
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    final_df = ensemble_df[[ID_COL, PRED_COL_NAME]].sort_values(ID_COL)
+    final_df = df_final[[ID_COL, PRED_COL_NAME]].sort_values(ID_COL)
     final_df.to_csv(OUTPUT_PATH, index=False)
 
-    print(f"\nSaved final weighted submission to: {OUTPUT_PATH}")
+    print(f"\nSaved final ensemble submission to: {OUTPUT_PATH}")
     print(final_df.head())
 
 
