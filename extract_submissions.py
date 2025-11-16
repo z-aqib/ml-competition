@@ -10,9 +10,31 @@ OUTPUT_DIR = "analyzing"          # new folder to collect all versions
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+META_PATH = os.path.join(OUTPUT_DIR, "submissions_metadata.csv")
+
+
 def run(cmd: str) -> str:
     """Run a shell command and return stdout as text."""
     return subprocess.check_output(cmd, shell=True, text=True, encoding="utf-8")
+
+
+# ===== 0. Load existing metadata (if any) to avoid duplicates =====
+existing_keys = set()  # (original_path, commit_hash)
+
+if os.path.exists(META_PATH):
+    print(f"Found existing metadata at {META_PATH}, loading to avoid duplicates...")
+    with open(META_PATH, "r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            # be robust if some old rows are missing fields
+            original_path = row.get("original_path")
+            commit_hash = row.get("commit_hash")
+            if original_path and commit_hash:
+                existing_keys.add((original_path, commit_hash))
+
+    print(f"Loaded {len(existing_keys)} existing (path, commit) pairs.")
+else:
+    print("No existing metadata file found. Starting fresh.")
 
 
 # ===== 1. Find every CSV that ever existed under submissions/ =====
@@ -35,7 +57,7 @@ for p in all_paths:
     print("  ", p)
 
 # ===== 2. For each file, get all its versions from history =====
-metadata_rows = []
+new_metadata_rows = []
 
 for path in all_paths:
     print(f"\nProcessing file history for: {path}")
@@ -58,6 +80,12 @@ for path in all_paths:
         sha = sha.strip()
         date = date.strip()
         msg = msg.strip()
+
+        key = (path, sha)
+        if key in existing_keys:
+            # We already have this (file, commit) in metadata, skip
+            # (and do NOT touch its CSV or kaggle_score)
+            continue
 
         # Safe file name parts
         original_name = Path(path).name
@@ -84,7 +112,8 @@ for path in all_paths:
             print(f"  [WARN] Could not extract {path} at {sha}")
             continue
 
-        # Write to analyzing/
+        # Write to analyzing/ (if the file already exists, overwrite is harmless;
+        # but usually this will be new)
         with open(out_path, "w", encoding="utf-8", newline="") as f:
             f.write(file_contents)
 
@@ -101,7 +130,7 @@ for path in all_paths:
                 kaggle_score = val
                 break
 
-        metadata_rows.append({
+        new_metadata_rows.append({
             "output_file": out_name,
             "original_path": path,
             "original_name": original_name,
@@ -111,23 +140,29 @@ for path in all_paths:
             "kaggle_score": kaggle_score,  # blank if not auto-parsed
         })
 
-# ===== 3. Write metadata CSV =====
-meta_path = os.path.join(OUTPUT_DIR, "submissions_metadata.csv")
-with open(meta_path, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(
-        f,
-        fieldnames=[
-            "output_file",
-            "original_path",
-            "original_name",
-            "commit_hash",
-            "date",
-            "commit_message",
-            "kaggle_score",
-        ],
-    )
-    writer.writeheader()
-    writer.writerows(metadata_rows)
+# ===== 3. Append new rows to metadata CSV (without touching existing rows) =====
+fieldnames = [
+    "output_file",
+    "original_path",
+    "original_name",
+    "commit_hash",
+    "date",
+    "commit_message",
+    "kaggle_score",
+]
 
-print(f"\nSaved {len(metadata_rows)} versions into '{OUTPUT_DIR}'")
-print(f"Metadata written to '{meta_path}'")
+if not new_metadata_rows:
+    print("\nNo new submissions found; metadata unchanged.")
+else:
+    file_exists = os.path.exists(META_PATH)
+    mode = "a" if file_exists else "w"
+
+    with open(META_PATH, mode, newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerows(new_metadata_rows)
+
+    print(f"\nAdded {len(new_metadata_rows)} new rows to '{META_PATH}'")
+
+print(f"CSV versions are in '{OUTPUT_DIR}'")
