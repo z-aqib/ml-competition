@@ -1,2 +1,3 @@
 EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,C,max_iter,penalty,random_state,solver
 experiment_5A,Zuha,logreg,42,5,img+text,none,False,256,none,1530,0.5829730367144067,0.043169784186952026,,,0.8534266948699951,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",1.0,500,l2,42,lbfgs
+experiment_6A,Zuha,logreg,42,5,img+text,minmax,True,256,none,1530,0.630024872930131,0.04470779579476641,,,2.899148464202881,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",1.0,500,l2,42,lbfgs
