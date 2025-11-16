@@ -4,3 +4,4 @@ experiment_6A,Zuha,logreg,42,5,img+text,minmax,True,256,none,1530,0.630024872930
 experiment_7A,Zuha,logreg,42,5,img+text,maxabs,True,256,none,1530,0.6215680272446289,0.03986042197014098,,,0.5391855239868164,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",10.0,1000,l2,42,lbfgs
 experiment_9A,Zuha,logreg,42,7,img+text,maxabs,True,256,none,1530,0.605792900390778,0.024374599216820544,,,0.4888143539428711,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",0.01,500,l2,42,liblinear
 experiment_11A,Zuha,logreg,42,7,img+text,minmax,True,64,none,1530,0.464285531288983,0.00043627585162770333,,,0.3134338855743408,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",0.01,5000,l1,42,saga
+experiment_13A,Zuha,logreg,42,7,img+text,minmax,True,64,none,1530,0.6093146531533602,0.026065148366114444,,,0.32358431816101074,submissions\logreg.csv,"LogReg + PCA256, standard scaler.",2.0,1000,l2,42,lbfgs
