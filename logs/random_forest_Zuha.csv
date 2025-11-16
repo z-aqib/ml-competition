@@ -1,0 +1,2 @@
+EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,bootstrap,max_depth,max_features,min_samples_leaf,min_samples_split,n_estimators,n_jobs,random_state
+experiment_33A,Zuha,rf,42,5,img+text,none,False,256,none,1530,0.47425113122389934,0.012444165289183672,,,72.99606084823608,submissions\rf_Zuha.csv,"RF baseline: 500 trees, max_depth=None, max_features='sqrt'.",True,,sqrt,1,2,500,-1,42
