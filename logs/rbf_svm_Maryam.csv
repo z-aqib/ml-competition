@@ -1,0 +1,2 @@
+EXP_NAME,EXPERIMENTER,MODEL_FAMILY,SEED,N_FOLDS,FEATURE_MODE,SCALER_TYPE,USE_PCA,PCA_N_COMPONENTS,IMBALANCE_MODE,train_size,cv_f1_macro_mean,cv_f1_macro_std,public_lb_f1_macro,private_lb_f1_macro,train_time_sec,submission_file,notes,C,gamma,kernel,probability,random_state
+exp_rbf_svm,Maryam,rbf_svm,42,5,img+text,none,False,256,none,1530,0.5898234718244324,0.025665317457626284,,,54.924864053726196,submissions\rbf_svm_Maryam_rbfsvm_pca128_v1.csv,"RBF SVM + PCA128, standard scaler.",1.0,scale,rbf,True,42
