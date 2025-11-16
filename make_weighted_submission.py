@@ -16,7 +16,7 @@ ALPHA = 4.0                # higher -> best models get much more weight
 THRESHOLD = 0.5            # 0.5 for binary decision
 
 MIN_SCORE = 0.65           # ignore submissions below this Kaggle score
-TOP_N = 3                  # or None to use all above MIN_SCORE
+TOP_N = 5                  # or None to use all above MIN_SCORE
 
 
 def main():
