@@ -1,0 +1,312 @@
+dss-ml-comp/
+├── analyzing
+│   ├── catboost_Maryam_catboost_v1__2daaf4e__not_pushed_cat_code__0_5294.csv
+│   ├── ensemble_maham_ensemble_cat__1e24c8f__ensemble.csv
+│   ├── ensemble_maham_ensemble_cat__b32080e__ensemble.csv
+│   ├── ensemble_maham_ensemble_cat_lr__7875bd3__ensemble_code.csv
+│   ├── ensemble_maham_ensemble_cat_soft__7875bd3__ensemble_code.csv
+│   ├── ensemble_maham_ensemble_cat_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_ensemble_catxgb_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_Ensemble_FINAL_XGB_Ada_LR__7ebfc32__hi.csv
+│   ├── ensemble_maham_ensemble_lgb72__7875bd3__ensemble_code.csv
+│   ├── ensemble_maham_ensemble_LR__b32080e__ensemble.csv
+│   ├── ensemble_maham_ensemble_LR_cat__b32080e__ensemble.csv
+│   ├── ensemble_maham_ensemble_LR_cat_lgbm__b32080e__ensemble.csv
+│   ├── ensemble_maham_ensemble_LR_cat_Linearsvm__69d2d56__stacking.csv
+│   ├── ensemble_maham_ensemble_LR_cat_Linearsvm_softvote__69d2d56__stacking.csv
+│   ├── ensemble_maham_ensemble_LR_cat_xgb_softvote__28dbf65__xgb.csv
+│   ├── ensemble_maham_ensemble_lr_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_ensemble_lrcatsvm_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_ensemble_svm_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost2__7ebfc32__hi.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost__13839a9__many_changes.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost__26b840f__merge_branch__main__of_https___github_co.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost__7ebfc32__hi.csv
+│   ├── ensemble_maham_Ensemble_XGB_CatBoost_LogReg_PCA64__13839a9__many_changes.csv
+│   ├── ensemble_maham_Ensemble_XGB_LogReg_PCA64__13839a9__many_changes.csv
+│   ├── ensemble_maham_ensemble_xgb_softvote__ffe9ded__mahams_commit.csv
+│   ├── ensemble_maham_Improved_Ensemble_XGB_AdaBoost__13839a9__many_changes.csv
+│   ├── ensemble_Maryam_Ensemble_XGB_AdaBoost__13839a9__many_changes.csv
+│   ├── ensemble_Zuha_4__c3c7184__0_7323.csv
+│   ├── ensemble_Zuha_4__d5e04d9__0_7277.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__0185304__0_7360.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__1bc326a__more_folds_lesser_estimators__0_7477.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__437977e__dec_depth__0_7392.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__4db4521__1200_estimators__0_7517.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__5520724__dec_estimators__0_7486.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__63f06b4__lesser_folds_0_7436.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__94a11d5__0_6134.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__96d7357__inc_estimators_to_1300__0_7593.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__9c885af__0_7311.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__b41e693__dec_estimators__dec_folds__0_7517.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__d95b9a7__data_part_2_-_best_file_from_p1__0_7362.csv
+│   ├── ensemble_Zuha_Ensemble_XGB_AdaBoost__fbc5528__depth_7__0_7436.csv
+│   ├── ensemble_Zuha_original__54f9cfa__0_7323.csv
+│   ├── ensemble_Zuha_original__ff13968__0_7247.csv
+│   ├── experiment_1A_lgbm_baseline_v1__79d786f__experiment_1a.csv
+│   ├── experiment_2A__839b43e__experiment_2a.csv
+│   ├── logreg__0734bb6__experiment_5a.csv
+│   ├── logreg__3830678__experiment_9a__0_5752.csv
+│   ├── logreg__3cc2581__experiment_14a__0_5989.csv
+│   ├── logreg__436f4d6__experiment_7a__0_6092.csv
+│   ├── logreg__74ae1a4__experiment_11a__0_3820.csv
+│   ├── logreg__a254c22__experiment_6a.csv
+│   ├── logreg__a264f08__experiment_13a__0_5844.csv
+│   ├── logreg__b34b357__experiment_16a__0_5647.csv
+│   ├── logreg_Zuha__21d591a__experiment_22a__0_6982.csv
+│   ├── logreg_Zuha__36bb980__experiment_19a__0_6745.csv
+│   ├── logreg_Zuha__7aa1919__experiment_20a__0_6862.csv
+│   ├── logreg_Zuha__7ea4b16__experiment_21a__0_7228.csv
+│   ├── logreg_Zuha__a5216c7__experiment_23a__0_6798.csv
+│   ├── logreg_Zuha__df1c951__experiment_18a__0_6714.csv
+│   ├── mlp_Maham__c2a7071__exp3c.csv
+│   ├── mlp_Maham_two_tower__c2a7071__exp3c.csv
+│   ├── random_Zuha__00ce958__experiment_29a__made_a_submission_using_.csv
+│   ├── random_Zuha__02c44d0__expriment_30a__0_7448.csv
+│   ├── random_Zuha__11370bd__experiment_32a__0_7448.csv
+│   ├── random_Zuha__200c42b__experiment_31a__0_7126.csv
+│   ├── rbf_svm_Maryam_rbfsvm_pca128_v1__157ed70__experiment_18b__0_6257.csv
+│   ├── rbf_svm_Maryam_rbfsvm_pca128_v1__abd279d__experiment_16b__0_6226.csv
+│   ├── rf_Zuha__e33b15f__experiment_33a__0_3820.csv
+│   ├── ridge_Maryam_logreg_pca256_v1__f896c3d__experiment_15b__0_5553.csv
+│   ├── ridge_Maryam_ridge_pca256_v1__50aba61__experiment_16b__no_change.csv
+│   ├── ridge_Maryam_ridge_pca256_v1__f896c3d__experiment_15b__0_5553.csv
+│   ├── stacking_Maryam_stacking_LR_Cat_LGB__9f4e6f5__experiment_20b__0_7208.csv
+│   ├── submission__12cd05d__experiment_4a.csv
+│   ├── submission__27eaf77__merge_branch__main__of_https___github_co.csv
+│   ├── submission__2d1e6ce__experiment_7b__0_5199.csv
+│   ├── submission__3ca7757__experiment_4b.csv
+│   ├── submission__63e40d9__experiment_8a__0_5227.csv
+│   ├── submission__6689b62__merge_branch__main__of_https___github_co.csv
+│   ├── submission__97044ba__merge_branch__main__of_https___github_co.csv
+│   ├── submission__a5a6e4f__experiment_8b__0_4962.csv
+│   ├── submission__abd3221__experiment_6b__0_5628.csv
+│   ├── submission__acaea17__experiment_3a.csv
+│   ├── submission__c2a7071__exp3c.csv
+│   ├── submission__d240eed__experiment_1b.csv
+│   ├── submission__dc85e5d__experiment_10a__0_5577.csv
+│   ├── submission__e7c8647__experiment_2b.csv
+│   ├── submission__e83fc59__experiment_15a__0_4775.csv
+│   ├── submission__f36a611__experiment_1c.csv
+│   ├── submission__f9fe893__merge_branch__main__of_https___github_co.csv
+│   ├── submission__fb872a0__experiment_5b__0_4973.csv
+│   ├── submission_Zuha__7de465f__experiment_17a__0_3820.csv
+│   ├── submissions_metadata.csv
+│   ├── svm_1627A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_1813A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_1817A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_1913A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_2109A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_2149A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_2293A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_233A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_2347A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_237A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_2971A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3015A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3019A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3119A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_328A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3303A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3359A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3543A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_3640A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_423A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_425A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4357A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4467A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4483A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4499A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4509A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4563A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_4749A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_477A__0dfd7d8__svm_grid_search.csv
+│   ├── svm_481A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_493A__0dfd7d8__svm_grid_search.csv
+│   ├── svm_5229A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_5283A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_905A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_957A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_961A__49d5313__grid_search_submitted__scores_on_gsheet.csv
+│   ├── svm_Zuha__159a596__experiment_24a__0_6204.csv
+│   ├── svm_Zuha__2dfaa6a__experiment_25a__0_5957.csv
+│   ├── svm_Zuha__5cff20b__experiment_28a__0_6649.csv
+│   ├── svm_Zuha__705f504__experiment_35a__0_7360.csv
+│   ├── svm_Zuha__7f89597__experiment_26a__0_7360.csv
+│   ├── xgb_39A__7fa184b__0_6604.csv
+│   ├── xgboost_Maryam__0c98865__experiment_12b___0_5628.csv
+│   ├── xgboost_Maryam__2cbd6a2__experiment_13b__no_change.csv
+│   ├── xgboost_Maryam__54325ce__experiment_11b__0_5583.csv
+│   ├── xgboost_Maryam__a5a6e4f__experiment_8b__0_4962.csv
+│   ├── xgboost_Maryam__cac9197__experiment_14b___no_change.csv
+│   ├── xgboost_Maryam__dab4f6d__experiment_10b__0_5125.csv
+│   ├── xgboost_Maryam__ed8ddeb__experiment_9b__0_5296.csv
+│   ├── xgboost_Zuha__392af26__0_6523.csv
+│   ├── xgboost_Zuha__6bf6c23__0_6534.csv
+│   ├── xgboost_Zuha__9f20a22__0_6777.csv
+│   ├── xgboost_Zuha__d022793__0_6806.csv
+│   ├── xgboost_Zuha__e11814c__bad_results.csv
+│   └── xgboost_Zuha__e774a1d__experiment_36a__0_5417.csv
+├── auto-ml
+├── catboost_info
+│   ├── learn
+│   │   └── events.out.tfevents
+│   ├── tmp
+│   │   ├── cat_feature_index.1e9fd2d4-20efecc5-c49438a6-112728bb.tmp
+│   │   ├── cat_feature_index.474e6538-3448ad22-8cbdc875-c74f34fd.tmp
+│   │   ├── cat_feature_index.7a43b733-4d5df26d-108729f5-21899526.tmp
+│   │   ├── cat_feature_index.8a82a0f2-ca18b542-8e915b14-7f987054.tmp
+│   │   ├── cat_feature_index.b55d830b-e8771723-361856fe-351d97de.tmp
+│   │   ├── cat_feature_index.c5c731be-857899cf-29712b6b-e7722e0b.tmp
+│   │   ├── cat_feature_index.e9d13b22-b4f3b172-1bfa3188-cf52735a.tmp
+│   │   └── cat_feature_index.fce4273d-c3a8c75-92233cd1-18be8f3c.tmp
+│   ├── catboost_training.json
+│   ├── learn_error.tsv
+│   └── time_left.tsv
+├── data
+│   ├── sample_solution.csv
+│   ├── test.json
+│   ├── train_p1.json
+│   └── train_part2.json
+├── logs
+│   ├── SVM_Zuha
+│   │   ├── svm_log_Zuha.csv
+│   │   └── svm_Zuha.csv
+│   ├── XGB
+│   │   ├── experiments_log_zuha.csv
+│   │   └── xgb_zuha.csv
+│   ├── experiments_log_Maham.csv
+│   ├── experiments_log_Maryam.csv
+│   ├── experiments_log_Zuha.csv
+│   ├── lightgbm_Zuha.csv
+│   ├── logreg_Zuha.csv
+│   ├── mlp_Maham.csv
+│   ├── random_forest_Zuha.csv
+│   ├── rbf_svm_Maryam.csv
+│   ├── rf_Zuha.csv
+│   ├── ridge_Maryam.csv
+│   ├── svm_Zuha.csv
+│   ├── xgboost_Maryam.csv
+│   └── xgboost_Zuha.csv
+├── readme-helpers
+│   ├── git_history.csv
+│   └── structure.txt
+├── submissions
+│   ├── SVM_Zuha
+│   │   ├── svm_1627A.csv
+│   │   ├── svm_1813A.csv
+│   │   ├── svm_1817A.csv
+│   │   ├── svm_1913A.csv
+│   │   ├── svm_2109A.csv
+│   │   ├── svm_2149A.csv
+│   │   ├── svm_2293A.csv
+│   │   ├── svm_233A.csv
+│   │   ├── svm_2347A.csv
+│   │   ├── svm_237A.csv
+│   │   ├── svm_2971A.csv
+│   │   ├── svm_3015A.csv
+│   │   ├── svm_3019A.csv
+│   │   ├── svm_3119A.csv
+│   │   ├── svm_328A.csv
+│   │   ├── svm_3303A.csv
+│   │   ├── svm_3359A.csv
+│   │   ├── svm_3543A.csv
+│   │   ├── svm_3640A.csv
+│   │   ├── svm_423A.csv
+│   │   ├── svm_425A.csv
+│   │   ├── svm_4357A.csv
+│   │   ├── svm_4467A.csv
+│   │   ├── svm_4483A.csv
+│   │   ├── svm_4499A.csv
+│   │   ├── svm_4509A.csv
+│   │   ├── svm_4563A.csv
+│   │   ├── svm_4749A.csv
+│   │   ├── svm_477A.csv
+│   │   ├── svm_481A.csv
+│   │   ├── svm_493A.csv
+│   │   ├── svm_5229A.csv
+│   │   ├── svm_5283A.csv
+│   │   ├── svm_905A.csv
+│   │   ├── svm_957A.csv
+│   │   └── svm_961A.csv
+│   ├── XGB
+│   │   └── xgb_39A.csv
+│   ├── catboost_Maryam_catboost_v1.csv
+│   ├── ensemble_maham_ensemble_cat.csv
+│   ├── ensemble_maham_ensemble_cat_lr.csv
+│   ├── ensemble_maham_ensemble_cat_soft.csv
+│   ├── ensemble_maham_ensemble_cat_softvote.csv
+│   ├── ensemble_maham_ensemble_catxgb_softvote.csv
+│   ├── ensemble_maham_Ensemble_FINAL_XGB_Ada_LR.csv
+│   ├── ensemble_maham_ensemble_lgb72.csv
+│   ├── ensemble_maham_ensemble_LR.csv
+│   ├── ensemble_maham_ensemble_LR_cat.csv
+│   ├── ensemble_maham_ensemble_LR_cat_lgbm.csv
+│   ├── ensemble_maham_ensemble_LR_cat_Linearsvm.csv
+│   ├── ensemble_maham_ensemble_LR_cat_Linearsvm_softvote.csv
+│   ├── ensemble_maham_ensemble_LR_cat_xgb_softvote.csv
+│   ├── ensemble_maham_ensemble_lr_softvote.csv
+│   ├── ensemble_maham_ensemble_lrcatsvm_softvote.csv
+│   ├── ensemble_maham_ensemble_svm_softvote.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost.csv
+│   ├── ensemble_maham_Ensemble_XGB_AdaBoost2.csv
+│   ├── ensemble_maham_Ensemble_XGB_CatBoost_LogReg_PCA64.csv
+│   ├── ensemble_maham_Ensemble_XGB_LogReg_PCA64.csv
+│   ├── ensemble_maham_ensemble_xgb_softvote.csv
+│   ├── ensemble_maham_Improved_Ensemble_XGB_AdaBoost.csv
+│   ├── ensemble_Maryam_Ensemble_XGB_AdaBoost.csv
+│   ├── ensemble_Zuha_4.csv
+│   ├── ensemble_zuha_Ensemble_XGB_AdaBoost.csv
+│   ├── ensemble_Zuha_original.csv
+│   ├── logreg_xgb-ensemble.csv
+│   ├── logreg_Zuha.csv
+│   ├── mlp_Maham.csv
+│   ├── mlp_Maham_two_tower.csv
+│   ├── random_Zuha.csv
+│   ├── rbf_svm_Maryam_rbfsvm_pca128_v1.csv
+│   ├── rf_Zuha.csv
+│   ├── ridge_Maryam_logreg_pca256_v1.csv
+│   ├── ridge_Maryam_ridge_pca256_v1.csv
+│   ├── stacking_Maryam_stacking_LR_Cat_LGB.csv
+│   ├── submission_linear_logreg_ensemble.csv
+│   ├── submission_Zuha.csv
+│   ├── svm_Zuha.csv
+│   ├── test.csv
+│   ├── test_metadata.csv
+│   ├── xgboost_Maryam.csv
+│   └── xgboost_Zuha.csv
+├── .gitignore
+├── 00-sampleCode.ipynb
+├── 01-lightgbm.ipynb
+├── 02-xgboost-grid.ipynb
+├── 02-xgboost.ipynb
+├── 03-mlp-new.ipynb
+├── 03-mlp.ipynb
+├── 04-logregression.ipynb
+├── 05-linearSVM-grid.ipynb
+├── 05-linearSVM.ipynb
+├── 06-RBF_SVM.ipynb
+├── 07-randomforest.ipynb
+├── 08-ERT.ipynb
+├── 09-catboost.ipynb
+├── 10-KNN.ipynb
+├── 11-ridge.ipynb
+├── 12-ensemble (1).ipynb
+├── 12-ensemble (4).ipynb
+├── 12-ensemble-datap2.ipynb
+├── 12-ensemble.ipynb
+├── 12-ensemble1.ipynb
+├── 12-ensemble2.ipynb
+├── 13-stacking.ipynb
+├── 14-logreg_linearSVM-ensemble.ipynb
+├── 14-stacking maham.ipynb
+├── 15-highest-running.ipynb
+├── 16-logreg_xgb-ensemble.ipynb
+├── automl-pycaret.py
+├── DSS Kaggle ML Competition Manual.pdf
+├── extract_git_history.py
+├── extract_submissions.py
+├── make_majority_submission.py
+├── make_weighted_submission.py
+├── README.md
+└── structure-maker.py
